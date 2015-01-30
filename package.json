@@ -1,0 +1,28 @@
+{
+  "name": "node-red-contrib-advanced-ping",
+  "version": "1.0.0",
+  "description": "A Node-RED node which takes input and pings a remote server.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emiloberg/node-red-contrib-advanced-ping.git"
+  },
+  "keywords": [
+    "node-red",
+    "node-red-contrib",
+    "contrib",
+    "ping"
+  ],
+  "node-red": {
+    "nodes": {
+      "file-function": "advanced-ping/advanced-ping.js"
+    }
+  },
+  "author": {
+    "name": "Emil Oberg"
+  },
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/emiloberg/node-red-contrib-advanced-ping/issues"
+  },
+  "homepage": "https://github.com/emiloberg/node-red-contrib-advanced-ping"
+}
