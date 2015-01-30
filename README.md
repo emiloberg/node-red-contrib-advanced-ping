@@ -19,6 +19,8 @@ Will perform ping on **any** input.
 
 You may override the host set in the configuration by passing in a value in `msg.host`.
 
+Any incomming data will be passed on to the output. Incoming `msg.payload` data will be outputted as `msg._payload` (as the new `msg.payload` will contain the result of the ping).
+
 ## Todo
 Ability to set ping options in node configuration/by incomming message. Right now, these settings are hardcoded
 
