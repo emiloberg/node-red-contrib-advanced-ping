@@ -9,7 +9,7 @@ This is a modification of the [node-red-node-ping](https://github.com/node-red/n
 
 Run the following command in the root directory of your Node-RED install
 
-    npm install node-red-node-ping
+    npm install node-red-contrib-advanced-ping
 
 ## Usage
 
