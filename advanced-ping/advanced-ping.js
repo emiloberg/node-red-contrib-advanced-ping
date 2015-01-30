@@ -23,22 +23,25 @@ module.exports = function(RED) {
         var node = this;
 
 		this.on("input", function (msg) {
-
+			var host = msg.host || node.host;
+			
 			if(msg.hasOwnProperty('payload')) {
 				msg._payload = msg.payload;
 			}
+			if(msg.hasOwnProperty('topic')) {
+				msg._topic = msg.topic;
+			}
 			msg.payload = false;
-			msg.host = msg.host || node.host;
+			msg.topic = host;
 
-
-			if (!msg.host) {
+			if (!host) {
 				node.warn('No host is specificed. Either specify in node configuration or by passing in msg.host');
 			}
 
 			var ex;
-			if (plat == "linux") { ex = spawn('ping', ['-n', '-w', '5', '-c', '1', msg.host]); }
-			else if (plat.match(/^win/)) { ex = spawn('ping', ['-n', '1', '-w', '5000', msg.host]); }
-			else if (plat == "darwin") { ex = spawn('ping', ['-n', '-t', '5', '-c', '1', msg.host]); }
+			if (plat == "linux") { ex = spawn('ping', ['-n', '-w', '5', '-c', '1', host]); }
+			else if (plat.match(/^win/)) { ex = spawn('ping', ['-n', '1', '-w', '5000', host]); }
+			else if (plat == "darwin") { ex = spawn('ping', ['-n', '-t', '5', '-c', '1', host]); }
 			else { node.error("Sorry - your platform - "+plat+" - is not recognised."); }
 			var res = false;
 			var line = "";
