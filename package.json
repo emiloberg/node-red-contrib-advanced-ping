@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-advanced-ping",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Node-RED node which takes input and pings a remote server.",
   "repository": {
     "type": "git",
