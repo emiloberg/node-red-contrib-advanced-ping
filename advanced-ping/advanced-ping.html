@@ -18,6 +18,10 @@
         <input type="text" id="node-input-host" placeholder="www.google.com">
     </div>
     <div class="form-row">
+        <label for="node-input-timeout"><i class="fa fa-clock-o"></i> Timeout (S)</label>
+        <input type="text" id="node-input-timeout" placeholder="Name">
+    </div>
+    <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
@@ -25,7 +29,7 @@
 
 <script type="text/x-red" data-help-name="adv ping">
     <p>Pings a machine and returns the trip time in ms. Will perform ping on <b>any</b> input.</p>
-    <p>Returns <b>false</b> if no response received within 5 seconds,  or if the host is unresolveable.</p>
+    <p>Returns <b>false</b> if no response received within the configured timeout period,  or if the host is unresolveable.</p>
     <p>Host set in configuration may be overridden by passing in a host in <code>msg.host</code>.</p>
 </script>
 
@@ -35,7 +39,8 @@
         color:"#fdf0c2",
         defaults: {
             name: {value:""},
-            host: {value:""}
+            host: {value:""},
+            timeout: {value:"5", required:true, validate:RED.validators.number()}
         },
         inputs:1,
         outputs:1,

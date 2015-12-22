@@ -20,6 +20,7 @@ module.exports = function(RED) {
     function PingNode(n) {
         RED.nodes.createNode(this,n);
         this.host = n.host;
+        this.timeout = parseInt(n.timeout);
         var node = this;
 
 		this.on("input", function (msg) {
@@ -39,9 +40,9 @@ module.exports = function(RED) {
 			}
 
 			var ex;
-			if (plat == "linux") { ex = spawn('ping', ['-n', '-w', '5', '-c', '1', host]); }
-			else if (plat.match(/^win/)) { ex = spawn('ping', ['-n', '1', '-w', '5000', host]); }
-			else if (plat == "darwin") { ex = spawn('ping', ['-n', '-t', '5', '-c', '1', host]); }
+			if (plat == "linux") { ex = spawn('ping', ['-n', '-w', node.timeout, '-c', '1', host]); }
+			else if (plat.match(/^win/)) { ex = spawn('ping', ['-n', '1', '-w', node.timeout*1000, host]); }
+			else if (plat == "darwin") { ex = spawn('ping', ['-n', '-t', node.timeout, '-c', '1', host]); }
 			else { node.error("Sorry - your platform - "+plat+" - is not recognised."); }
 			var res = false;
 			var line = "";
